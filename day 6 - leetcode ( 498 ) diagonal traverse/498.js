@@ -43,14 +43,14 @@ const findDiagonalOrder = (matrix) => {
   return result;
 };
 
-// PLAN ( APPROACH 2 )
+// PLAN ( APPROACH 2 ) => WAY BETTER AND CLEANER APPROACH
 // step 1: if the matrix has only one row, return the matrix as a normal flattened array because there is no diagonal direction to manage
 // step 2: get the total number of rows using matrix.length
 // step 3: get the total number of columns using matrix[0].length
-// step 4: create an array containing one empty array for every diagonal using Array.from() and (rows + columns - 1) because that is the total number of diagonals
+// step 4: create an array containing one empty array for every diagonal using (rows + columns - 1) and .map()
 // step 5: loop through every row using i
 // step 6: inside the row loop, loop through every column using j
-// step 7: use i + j to determine which diagonal the current matrix value belongs to because cells on the same diagonal have the same row + column
+// step 7: use i + j ( key ) to determine which diagonal the current matrix value belongs to because cells on the same diagonal have the same row + column
 // step 8: check if the diagonal number (i + j) is even or odd using % 2
 // step 9: if the diagonal is even, use unshift() to add the current value to the beginning of that diagonal so the values are stored in reverse order
 // step 10: if the diagonal is odd, use push() to add the current value to the end of that diagonal so the values remain in normal order
@@ -63,11 +63,14 @@ const findDiagonalOrder = (matrix) => {
   let row = matrix.length;
   let col = matrix[0].length;
 
-  const result = Array.from({ length: row + col - 1 }, () => []);
+  const result = Array(row + col - 1)
+    .fill(0)
+    .map(() => []);
 
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
-      if ((i + j) % 2 === 0) {
+      const key = i + j;
+      if (key % 2 === 0) {
         result[i + j].unshift(matrix[i][j]);
       } else {
         result[i + j].push(matrix[i][j]);
