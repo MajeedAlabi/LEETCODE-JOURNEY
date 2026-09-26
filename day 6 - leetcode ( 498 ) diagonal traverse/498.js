@@ -1,4 +1,4 @@
-// PLAN
+// PLAN ( APPROACH 1 )
 // step 1: get the total number of rows of the matrix using matrix.length
 // step 2: get the total number of columns of the matrix using matrix[0].length
 // step 3: get the total number of diagonal loops of the matrix using (rows + columns) - 1
@@ -41,4 +41,39 @@ const findDiagonalOrder = (matrix) => {
   }
 
   return result;
+};
+
+// PLAN ( APPROACH 2 )
+// step 1: if the matrix has only one row, return the matrix as a normal flattened array because there is no diagonal direction to manage
+// step 2: get the total number of rows using matrix.length
+// step 3: get the total number of columns using matrix[0].length
+// step 4: create an array containing one empty array for every diagonal using Array.from() and (rows + columns - 1) because that is the total number of diagonals
+// step 5: loop through every row using i
+// step 6: inside the row loop, loop through every column using j
+// step 7: use i + j to determine which diagonal the current matrix value belongs to because cells on the same diagonal have the same row + column
+// step 8: check if the diagonal number (i + j) is even or odd using % 2
+// step 9: if the diagonal is even, use unshift() to add the current value to the beginning of that diagonal so the values are stored in reverse order
+// step 10: if the diagonal is odd, use push() to add the current value to the end of that diagonal so the values remain in normal order
+// step 11: after all rows and columns have been processed, use flat() to combine all the individual diagonal arrays into one final array
+// step 12: return the flattened result
+
+const findDiagonalOrder = (matrix) => {
+  if (matrix.length === 1) return matrix.flat();
+
+  let row = matrix.length;
+  let col = matrix[0].length;
+
+  const result = Array.from({ length: row + col - 1 }, () => []);
+
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      if ((i + j) % 2 === 0) {
+        result[i + j].unshift(matrix[i][j]);
+      } else {
+        result[i + j].push(matrix[i][j]);
+      }
+    }
+  }
+
+  return result.flat();
 };
