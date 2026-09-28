@@ -105,8 +105,8 @@ const rotateString = (string1, string2) => {
       return true;
     }
 
-    const modified2 = modified.splice(0, 1);
-    const modified3 = modified.push(modified2);
+    const modified2 = modified.shift();
+    modified.push(modified2);
   }
 
   return false;
