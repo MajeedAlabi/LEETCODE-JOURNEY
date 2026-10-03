@@ -34,5 +34,3 @@ const twoSum = (nums, target) => {
     }
   }
 };
-
-twoSum([3, 2, 4], 6);
