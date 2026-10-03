@@ -10,61 +10,60 @@
 // HINT: every Pascal row starts and ends with 1
 // step 7: get the previous row using result[i - 1] and store it in prevArr
 // HINT: we need the previous row to calculate the middle values of the current row
-// step 8: check if prevArr.length is equal to 2
-// HINT: this means the previous row is [1, 1], so we are creating the third row
-// step 9: if prevArr.length is 2, add a new row containing: [firstValue, firstValue + lastValue, lastValue];
-// HINT: this creates [1, 2, 1];
-// step 10: if prevArr.length is greater than 2, initialize leftValueIndex to 0
-// HINT: this index will point to the left value we want to add
-// step 11: initialize rightValueIndex to 1
-// HINT: this index will point to the value immediately to the right of leftValueIndex
-// step 12: initialize an empty array called add
+// step 8: initialize leftValueIndex to 0
+// HINT: this index points to the left value of the pair we want to add
+// step 9: initialize rightValueIndex to 1
+// HINT: this index points to the value immediately to the right of leftValueIndex
+// step 10: initialize an empty array called add
 // HINT: add will store all the calculated middle values
-// step 13: create a while loop that continues while rightValueIndex is less than prevArr.length
-// HINT: we stop when there is no value available at the right index
-// step 14: inside the while loop, add the value at leftValueIndex and the value at rightValueIndex together
+// step 11: create a while loop that continues while rightValueIndex is less than prevArr.length
+// HINT: this allows us to compare every pair of adjacent values in the previous row
+// step 12: inside the while loop, add the value at leftValueIndex and the value at rightValueIndex together
 // HINT: these are two adjacent values from the previous Pascal row
-// step 15: push the calculated value into the add array
-// step 16: increase leftValueIndex by 1
-// step 17: increase rightValueIndex by 1
+// step 13: push the calculated value into the add array
+// step 14: increase leftValueIndex by 1
+// step 15: increase rightValueIndex by 1
 // HINT: both indexes move forward together so we always compare adjacent values
-// step 18: after the while loop finishes, create the current Pascal row
+// step 16: after the while loop finishes, create the current Pascal row
 // HINT: the row should contain firstValue, all values inside add, and lastValue
 // HINT: use the spread operator to insert all values from add into the row
-// step 19: push the newly created row into result
-// step 20: continue the for loop until all numsRow rows have been created
-// step 21: return result
+// step 17: push the newly created row into result
+// step 18: continue the for loop until all numsRow rows have been created
+// step 19: return result
 
 const generate = (numsRow) => {
   let result = [];
+
   if (numsRow >= 1) {
     result.push([1]);
   }
+
   if (numsRow >= 2) {
     result.push([1, 1]);
   }
 
-  // get middle values , this loop doesnt run if numsRow is 1 or 2
+  // get middle values
+  // this loop doesn't run if numsRow is 1 or 2
 
   for (let i = 2; i < numsRow; i++) {
     let firstValue = 1;
     let lastValue = 1;
+
     const prevArr = result[i - 1];
 
-    if (prevArr.length === 2) {
-      result.push([firstValue, firstValue + lastValue, lastValue]); // .ie. current pascal row is 3
-    } else {
-      let leftValueIndex = 0;
-      let rightValueIndex = 1;
-      let add = [];
-      while (rightValueIndex < prevArr.length) {
-        add.push(prevArr[leftValueIndex] + prevArr[rightValueIndex]);
-        leftValueIndex++;
-        rightValueIndex++;
-      }
+    let leftValueIndex = 0;
+    let rightValueIndex = 1;
 
-      result.push([firstValue, ...add, lastValue]);
+    let add = [];
+
+    while (rightValueIndex < prevArr.length) {
+      add.push(prevArr[leftValueIndex] + prevArr[rightValueIndex]);
+
+      leftValueIndex++;
+      rightValueIndex++;
     }
+
+    result.push([firstValue, ...add, lastValue]);
   }
 
   return result;
