@@ -1,4 +1,4 @@
-// PLAN ( APPROACH 1 ) => always use this approach , approach 2 and 3 will always say time limit exceeded when you submit even though they are correct
+// PLAN ( APPROACH 1 ) => always use this approach or approach 2 , approach 3 and 4 will always say time limit exceeded when you submit even though they are correct
 // step 1: pass in nums1 and nums2 arrays into the function
 // step 2: loop over the nums1 array
 // step 3: inside the nums1 loop, create another loop over the nums2 array
@@ -28,7 +28,41 @@ const getCommon = (nums1, nums2) => {
   return -1;
 };
 
-// PLAN ( APPROACH 2 )
+// PLAN ( APPROACH 2 ) => two pointer method
+// step 1: pass in nums1 and nums2 arrays into the function
+// step 2: initialize two variables called i and j and set both to 0, i will keep track of our position in nums1, j will keep track of our position in nums2
+// step 3: use a while loop that continues while i is less than nums1.length AND j is less than nums2.length
+// HINT: we stop when either pointer reaches the end of its array because there are no more values left to compare
+// step 4: compare nums1[i] and nums2[j]
+// step 5: if nums1[i] === nums2[j], we have found a common value, so return nums1[i]
+// HINT: both arrays are sorted in ascending order, so the first common value we find will be the smallest common value
+// step 6: if nums1[i] < nums2[j], move the i pointer forward by 1
+// HINT: nums1[i] is smaller than nums2[j], so nums1[i] cannot match the current or any previous value in nums2. We therefore move to the next value in nums1.
+// step 7: if nums2[j] < nums1[i], move the j pointer forward by 1
+// HINT: nums2[j] is smaller than nums1[i], so nums2[j] cannot match the current or any previous value in nums1. We therefore move to the next value in nums2.
+// step 8: continue comparing the values while both pointers are still inside their respective arrays
+// step 9: if the while loop finishes without finding a common value, return -1
+
+const getCommon = (nums1, nums2) => {
+  let i = 0;
+  let j = 0;
+
+  while (i < nums1.length && j < nums2.length) {
+    if (nums1[i] === nums2[j]) {
+      return nums1[i];
+    }
+
+    if (nums1[i] < nums2[j]) {
+      i++;
+    } else {
+      j++;
+    }
+  }
+
+  return -1;
+};
+
+// PLAN ( APPROACH 3 )
 // step 1: pass in nums1 and nums2 array into the function
 // step 2: declare a variable called 'result' and default it to an empty array
 // step 3: loop over the nums1 array
@@ -59,7 +93,7 @@ const getCommon = (nums1, nums2) => {
   }
 };
 
-// PLAN ( APPROACH 3 )
+// PLAN ( APPROACH 4 )
 // step 1: pass in nums1 and nums2 array into the function
 // step 2: use .sort() on the nums 1 and nums 2 array and arrange them in ascending order ( from lowest to highest )
 // step 3: loop over the nums1 array
