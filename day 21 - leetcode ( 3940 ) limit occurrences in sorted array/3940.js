@@ -1,4 +1,4 @@
-// PLAN => OBJECT COUNTER APPROACH
+// PLAN ( APPROACH ONE ) => beginner friendly approach 1
 // step 1: pass the nums array and k into the function
 // step 2: create an empty object to keep track of the number of occurrences of each value
 // step 3: create an empty array to store the final result
@@ -39,4 +39,38 @@ const limitOccurrences = (nums, k) => {
   }
 
   return finalResult;
+};
+
+
+// PLAN ( APPROACH TWO ) => beginner friendly approach 2 => recommended
+// step 1: pass the nums array and k into the function
+// step 2: create an empty result array to store the final values
+// step 3: create a counter to track the number of times the current value appears consecutively
+// step 4: loop through the nums array
+// step 5: check if we are at the first element or if the current value is different from the previous value
+// step 6: if either condition is true, reset the counter to 1 because a new value has started
+// step 7: otherwise, increase the counter by 1 because the current value is the same as the previous value
+// step 8: check if the counter is less than or equal to k
+// step 9: if the counter is less than or equal to k, push the current value into the result array
+// HINT: if the counter is greater than k, skip the current value
+// step 10: continue until the loop reaches the end of the nums array
+// step 11: return the result array
+
+const limitOccurrences = (nums, k) => {
+  const result = [];
+  let counter = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i === 0 || nums[i] !== nums[i - 1]) {
+      counter = 1;
+    } else {
+      counter++;
+    }
+
+    if (counter <= k) {
+      result.push(nums[i]);
+    }
+  }
+
+  return result;
 };
