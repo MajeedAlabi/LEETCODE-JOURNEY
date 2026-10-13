@@ -1,4 +1,4 @@
-// PLAN => similar to leetcode
+// PLAN => similar to leetcode 118
 // step 1: pass rowIndex into the function
 // step 2: initialize a variable called result and set it to [1]
 // HINT: rowIndex 0 means the answer is simply [1]
