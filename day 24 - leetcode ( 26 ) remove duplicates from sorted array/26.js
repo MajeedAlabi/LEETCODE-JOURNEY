@@ -1,4 +1,4 @@
-// PLAN ( APPROACH ONE ) => works but has red flags as stated in the hint , some interviews might not accept it 
+// PLAN ( APPROACH ONE ) => works but has red flags as stated in the hint , some interviews might not accept it
 // step 1: pass the nums array into the function
 // step 2: create a left pointer at index 0 and a right pointer at index 1
 // step 3: initialize count to 0
@@ -31,8 +31,7 @@ const removeDuplicates = (nums) => {
   return count;
 };
 
-
-// PLAN
+// PLAN ( APPROACH TWO ) => recommended beginner friendly method , widely accepted
 // step 1: pass the nums array into the function
 // step 2: if nums is empty, return 0
 // step 3: create a left pointer at index 0 to track the last unique element
@@ -42,17 +41,18 @@ const removeDuplicates = (nums) => {
 // step 7: copy the value at right into the new position at left
 // step 8: return left + 1 as the number of unique elements
 // HINT: use direct index assignment to overwrite duplicates instead of removing elements with splice
-// const removeDuplicates = (nums) => {
-//   if (nums.length === 0) return 0;
 
-//   let left = 0;
+const removeDuplicates = (nums) => {
+  if (nums.length === 0) return 0;
 
-//   for (let right = 1; right < nums.length; right++) {
-//     if (nums[right] !== nums[left]) {
-//       left++;
-//       nums[left] = nums[right];
-//     }
-//   }
+  let left = 0;
 
-//   return left + 1;
-// };
+  for (let right = 1; right < nums.length; right++) {
+    if (nums[right] !== nums[left]) {
+      left++;
+      nums[left] = nums[right];
+    }
+  }
+
+  return left + 1;
+};
