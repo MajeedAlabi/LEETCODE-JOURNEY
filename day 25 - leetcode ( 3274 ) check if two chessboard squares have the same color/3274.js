@@ -1,4 +1,4 @@
-// PLAN
+// PLAN ( APPROACH ONE ) => beginner friendly
 // step 1: pass the coordinate1 and coordinate2 strings into the function
 // step 2: create an array containing the horizontal coordinates from a to h
 // step 3: create an array containing the vertical coordinates from 1 to 8
@@ -61,4 +61,32 @@ const checkTwoChessboards = (coordinate1, coordinate2) => {
   } else {
     return false;
   }
+};
+
+// PLAN ( APPROACH TWO ) => DRY and better method once you understand the hint
+// step 1: pass the coordinate1 and coordinate2 strings into the function
+// step 2: create an array containing the horizontal coordinates from a to h
+// step 3: create a helper function that accepts a coordinate string
+// step 4: find the index of the coordinate letter in the horizontal array
+// step 5: convert the coordinate number from a string to a number
+// step 6: add the letter index and coordinate number, then use modulo 2 to determine the color pattern
+// step 7: call the helper function for both coordinates
+// step 8: compare the results and return true if they are equal or false otherwise
+// HINT: all coordinates whose addition of horizontal and vertical index give an even number all have the same color 
+// HINT: all coordinates whose addition of horizontal and vertical index give an odd number all have the same color 
+
+const checkTwoChessboards = (coordinate1, coordinate2) => {
+  const horizontal = ["a", "b", "c", "d", "e", "f", "g", "h"];
+
+  function getColor(coordinate) {
+    const letterIndex = horizontal.findIndex(
+      (letter) => letter === coordinate[0],
+    );
+
+    const number = Number(coordinate[1]);
+
+    return (letterIndex + number) % 2;
+  }
+
+  return getColor(coordinate1) === getColor(coordinate2);
 };
