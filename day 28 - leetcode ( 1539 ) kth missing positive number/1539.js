@@ -35,3 +35,23 @@ const findKthPositive = (arr, k) => {
 
   return missingValues[k - 1];
 };
+
+// PLAN ( APPROACH ) => more complex but interviewers would be impressed
+// step 1: pass the arr array and k into the function
+// step 2: loop through the arr array
+// step 3: check if the current number is less than or equal to k
+// step 4: if it is, increase k by 1 because that number is not missing
+// step 5: if the current number is greater than k, stop the loop because k is the kth missing positive number
+// step 6: return k
+
+const findKthPositive = (arr, k) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] <= k) {
+      k++;
+    } else {
+      break;
+    }
+  }
+
+  return k;
+};
