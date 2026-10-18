@@ -20,6 +20,11 @@ const findKthPositive = (arr, k) => {
 };
 
 // PLAN ( APPROACH TWO )
+// step 1: create a number that represents the upper limit we need to check
+// step 2: create an array containing all positive numbers from 1 to the upper limit
+// step 3: filter the array to keep only numbers that do not exist in arr using includes()
+// step 4: return the kth missing number using k - 1 as the index
+
 const findKthPositive = (arr, k) => {
   let finalNum = arr[arr.length - 1] + k;
   let store = [];
@@ -30,5 +35,3 @@ const findKthPositive = (arr, k) => {
 
   return missingValues[k - 1];
 };
-
-findKthPositive([2, 3, 4, 7, 11], 5);
