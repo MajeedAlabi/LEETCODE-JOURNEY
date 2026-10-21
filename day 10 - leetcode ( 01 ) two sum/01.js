@@ -1,4 +1,4 @@
-// PLAN
+// PLAN ( APPROACH ONE ) => not recommended
 // step 1: pass in your nums array and your target interger into the function
 // step 2: loop over the nums array while keeping each i as a point of reference ( .ie. first digit in your sum equation )
 // step 3: initialize an empty array called newArr at the beginning of every loop
@@ -31,6 +31,30 @@ const twoSum = (nums, target) => {
       );
       const result = [i, secondValueIndex];
       return result;
+    }
+  }
+};
+
+
+// PLAN ( APPROACH TWO ) => hashmap ( highly recommended )
+// step 1: pass the nums array and target into the function
+// step 2: create a Map to store each number and its index
+// step 3: loop through the nums array using i as the current index
+// step 4: calculate the second value needed to reach target by subtracting nums[i] from target
+// step 5: check if the second value already exists in the Map
+// step 6: if it exists, return the stored index of the second value and the current index i
+// step 7: if it doesn't exist, store the current number and its index in the Map
+// step 8: continue until a valid pair is found
+
+const twoSum = (nums, target) => {
+  const store = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    const secondValue = target - nums[i];
+    if (store.has(secondValue)) {
+      return [store.get(secondValue), i];
+    } else {
+      store.set(nums[i], i);
     }
   }
 };
