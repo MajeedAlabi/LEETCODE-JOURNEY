@@ -1,4 +1,6 @@
-// PLAN ( APPRAOCH ONE ) => filtering and reversing , time complexity O(n)
+// BONUS CHALLENGE: after learning approach one and two, you can try to solve it using regex , this will eliminate the need for storeReference array
+
+// PLAN ( APPROACH ONE ) => filtering and reversing , time complexity O(n)
 // step 1: create a reference array containing all valid alphanumeric characters
 // step 2: create an empty array to store the valid characters from the input string
 // step 3: loop through the input string
