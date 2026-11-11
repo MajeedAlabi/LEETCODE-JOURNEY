@@ -21,4 +21,4 @@ const shortestSubarray = (nums, k) => {
   return shortestSubArray === Infinity ? -1 : shortestSubArray;
 };
 
-console.log("sss", shortestSubarray([54, -5, 53, -19, 85]));
+console.log("ss", shortestSubarray([54, -5, 53, -19, 85]));
