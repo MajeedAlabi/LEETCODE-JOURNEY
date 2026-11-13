@@ -16,7 +16,7 @@
 // step 9: compare the sizes of both Maps
 // if they match, compare the frequency of each character
 // step 10: if all character frequencies match, add windowStart to result
-// step 11: return the result array
+// step 11: return the result arra
 
 const findAnagrams = (s, p) => {
   const result = [];
