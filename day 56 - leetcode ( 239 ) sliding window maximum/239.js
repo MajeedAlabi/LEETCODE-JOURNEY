@@ -72,7 +72,7 @@ const maxSlidingWindow = (nums, k) => {
       left++;
     }
   }
-  console.log("first", result);
+//   console.log("first", result);
   return result;
 };
 
