@@ -77,3 +77,4 @@ const maxSlidingWindow = (nums, k) => {
 };
 
 maxSlidingWindow([1], 1);
+// watch optimized solution 
