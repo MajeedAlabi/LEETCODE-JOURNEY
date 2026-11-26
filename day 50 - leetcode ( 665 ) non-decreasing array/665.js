@@ -6,7 +6,7 @@ const checkPossibility = (nums) => {
       //   const modifiedValue = Math.max(nums[i - 1], nums[i + 1]);
       nums[i] = nums[i - 1] || -Infinity;
       modified++;
-      console.log("hmm", `modified: ${modified} i: ${i} nums[i]: ${nums[i]}`);
+      console.log("hm", `modified: ${modified} i: ${i} nums[i]: ${nums[i]}`);
     }
     let lastAccurateValue = nums[i + 1];
     if (modified > 1) {
